@@ -1,27 +1,30 @@
 import {SpriteSheet} from './SpriteSheet.js';
-import {loadImage} from './loaders.js';
+import {loadImage, loadLevel} from './loaders.js';
 
 const BLOCK_SIZE = 16;
 
+function drawBackground(background, context, sprites) {
+  background.ranges.forEach(([x1, x2, y1, y2]) => {
+    for (let x = x1; x < x2; ++x) {
+      for (let y = y1; y < y2; ++y) {
+        sprites.drawTile(background.tile, context, x, y);
+      }
+    }
+  });
+}
+
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
-
-context.fillRect(0, 0, 60, 50);
 
 loadImage('/img/tiles.png').then((image) => {
   const sprites = new SpriteSheet(image, BLOCK_SIZE, BLOCK_SIZE);
   sprites.define('ground', 0, 0);
   sprites.define('sky', 3, 23);
 
-  for (let x = 0; x < 25; ++x) {
-    for (let y = 0; y < 14; ++y) {
-      sprites.drawTile('sky', context, x, y);
-    }
-  }
-
-  for (let x = 0; x < 25; ++x) {
-    for (let y = 12; y < 14; ++y) {
-      sprites.drawTile('ground', context, x, y);
-    }
-  }
+  loadLevel('1-1').then((level) => {
+    console.log(level);
+    level.backgrounds.forEach((background) => {
+      drawBackground(background, context, sprites);
+    });
+  });
 });
