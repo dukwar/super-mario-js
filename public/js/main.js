@@ -6,7 +6,7 @@ const BLOCK_SIZE = 16;
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
 
-context.fillRect(0, 0, 50, 50);
+context.fillRect(0, 0, 60, 50);
 
 loadImage('/img/tiles.png').then((image) => {
   const sprites = new SpriteSheet(image, BLOCK_SIZE, BLOCK_SIZE);
