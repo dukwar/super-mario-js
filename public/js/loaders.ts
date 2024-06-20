@@ -1,4 +1,4 @@
-export function loadImage(url) {
+export function loadImage(url: string) {
   return new Promise((resolve) => {
     const image = new Image();
 
@@ -9,6 +9,6 @@ export function loadImage(url) {
   });
 }
 
-export function loadLevel(name) {
+export async function loadLevel(name: string) {
   return fetch(`/levels/${name}.json`).then((r) => r.json());
 }
