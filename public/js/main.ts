@@ -1,6 +1,7 @@
 import {SpriteSheet} from './SpriteSheet';
 import {loadImage, loadLevel} from './loaders';
-import {Background, Level} from 'public/js/types';
+import {Background, Level} from '@public/js/types';
+import IMG from '@public/img/tiles.png';
 
 const BLOCK_SIZE = 1;
 function drawBackground(
@@ -20,7 +21,7 @@ function drawBackground(
 const canvas = document.getElementById('screen') as HTMLCanvasElement;
 const context = canvas.getContext('2d');
 
-loadImage('/img/tiles.png').then((image) => {
+loadImage(IMG).then((image) => {
   const sprites = new SpriteSheet(image as HTMLImageElement, BLOCK_SIZE, BLOCK_SIZE);
   sprites.define('ground', 0, 0);
   sprites.define('sky', 3, 23);
@@ -32,3 +33,5 @@ loadImage('/img/tiles.png').then((image) => {
     });
   });
 });
+
+console.log(IMG);

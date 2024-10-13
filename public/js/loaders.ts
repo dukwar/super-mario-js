@@ -10,5 +10,5 @@ export function loadImage(url: string) {
 }
 
 export async function loadLevel(name: string) {
-  return fetch(`/levels/${name}.json`).then((r) => r.json());
+  return fetch(`/static/levels/${name}.json`).then((r) => r.json());
 }

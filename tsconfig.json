@@ -3,10 +3,11 @@
     /* Language and Environment */
     "target": "ES6",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     /* Modules */
-    "module": "ES6",
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
     "outDir": "./dist",
     "skipLibCheck": true,
@@ -17,11 +18,7 @@
       "@public/*": ["public/*"]
     },
   },
-  "tsc-alias": {
-    "resolveFullPaths": true,
-    "verbose": false
-  },
   "include": [
-    "public"
+    "public", "declarations.d.ts"
   ],
 }
