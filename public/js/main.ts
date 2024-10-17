@@ -3,7 +3,8 @@ import {loadImage, loadLevel} from './loaders';
 import {Background, Level} from '@public/js/types';
 import IMG from '@public/img/tiles.png';
 
-const BLOCK_SIZE = 1;
+const BLOCK_SIZE = 16;
+
 function drawBackground(
   background: Background,
   context: CanvasRenderingContext2D,
@@ -27,7 +28,6 @@ loadImage(IMG).then((image) => {
   sprites.define('sky', 3, 23);
 
   loadLevel('1-1').then((level: Level) => {
-    console.log(level);
     level.backgrounds.forEach((background) => {
       context && drawBackground(background, context, sprites);
     });
